@@ -15,6 +15,12 @@ Automatically translate comments and docstrings in a Python project, without tou
 ---
 
 ## Installation
+1. pypi https://pypi.org/project/pydoc-translate/
+   ```pip install pydoc-translate```
+   
+---
+
+## Manuel Installation
 
 1. **Clone** this repository:  
     ```bash
