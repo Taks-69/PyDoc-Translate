@@ -35,7 +35,7 @@ Automatically translate comments and docstrings in a Python project, without tou
 3. **Install** the module (build the distributions, then install them):  
     ```bash
     python setup.py sdist bdist_wheel
-    pip install dist\pydoc_translate-1.0.0-py3-none-any.whl
+    pip install dist\pydoc_translate-1.0.2-py3-none-any.whl
     ```
 
 ---
