@@ -19,14 +19,19 @@ def replace_comments_in_file(file_content, target_lang):
     triple_pattern = r'(\"\"\"([\s\S]*?)\"\"\")|(\'\'\'([\s\S]*?)\'\'\')'
 
     def triple_replacer(match):
-        # Si match.group(1) n’est pas None, c’est un bloc """..."""
-        # Sinon, c’est un bloc '''...'''
+        start_index = match.start()
+        line_start = file_content.rfind('\n', 0, start_index) + 1
+        prefix = file_content[line_start:start_index]
+        if prefix.strip():
+            # Présence de contenu avant le début des triple quotes : ne pas traduire.
+            return match.group(0)
+        
         if match.group(1) is not None:
-            content = match.group(2)  # Le texte sans les guillemets
+            content = match.group(2)  # Le texte sans les guillemets pour les """..."""
             translated = quick_translate(content, target_lang)
             return f'"""{translated}"""'
         else:
-            content = match.group(4)
+            content = match.group(4)  # Le texte sans les guillemets pour les '''...'''
             translated = quick_translate(content, target_lang)
             return f"'''{translated}'''"
 
